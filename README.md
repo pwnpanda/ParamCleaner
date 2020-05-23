@@ -1,10 +1,15 @@
 ## Param Cleaner
+
 Program that takes in a file with one URL per line and removes all lines with duplicate parameters
 Do note, that these are not considered duplicates and both versions will be in the output:
+
+------------------------
+Example 1:
 1. http://example.com?a=1
 2. https://example.com?a=1
-\
 
+------------------------------
+Example 2:
 1. http://example.com?a=1&b=2
 2. http://example.com?a=1&b=2&c=3
 
