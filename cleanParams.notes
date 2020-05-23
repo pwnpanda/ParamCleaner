@@ -1,0 +1,40 @@
+#!/bin/bash
+
+FILE=$1
+DATA=$(cat $FILE | grep "=" | grep -v ".jpg\|.png\|.css\|.js" | uniq)
+
+# need to find each unique param line
+# if new param is found, keep it. If not, remove itC:q
+
+# | sed -e 's#.*=\(\)#\1#'
+# 
+# http://banner.finn.no/finn/car/used/result/feed.atom?
+# YEAR_MODEL_FROM=1953&YEAR_MODEL_TO=1970&keyword=volkswagen" | sed -e 's#.*=\(\)#\1#'
+# -> volkswagen
+
+# Last value for "?"
+# cut -d "?" -f2
+# 
+# echo "http://banner.finn.no/finn/car/used/result/feed.atom?
+# YEAR_MODEL_FROM=1953&YEAR_MODEL_TO=1970&keyword=volkswagen" | cut -d "?" -f2
+# -> YEAR_MODEL_FROM=1953&YEAR_MODEL_TO=1970&keyword=volkswagen
+
+# Use this to get all parameters
+# Then extract each param
+# then create insertion?
+
+
+# Last value for "="
+# cut -d "=" -f2
+# 
+# echo "http://banner.finn.no/finn/car/used/result/feed.atom?
+# YEAR_MODEL_FROM=1953&YEAR_MODEL_TO=1970&keyword=volkswagen" | cut -d "=" -f2
+# -> 1953&YEAR_MODEL_TO
+
+# All values after first "="
+# cut -d "=" -f2-
+# echo "http://banner.finn.no/finn/car/used/result/feed.atom?YEAR_MODEL_FROM=1953&
+# YEAR_MODEL_TO=1970&keyword=volkswagen" | cut -d "=" -f2-
+# -> 1953&YEAR_MODEL_TO=1970&keyword=volkswagen
+
+
