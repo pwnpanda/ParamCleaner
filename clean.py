@@ -16,8 +16,11 @@ def readfile(infile):
     lines = 0
     with open(infile, "r") as file:
         #print(F"file: {infile}")
-        line = file.readline().strip()
-        while line:
+        #line = file.readline().strip()
+        for line in file:
+            line = line.strip()
+            if not line:
+                continue
             lines += 1
             #print(F"Line: {line}")
             if "?" in line:
@@ -62,13 +65,14 @@ def readfile(infile):
     return lines
 
 
-if len(sys.argv) > 0:
+if len(sys.argv) > 1:
+    #print(sys.argv)
     filename = sys.argv[1]
     org_len = readfile(filename)
     #print(F"Results: {unique}")
     
     new_len = 0
-    with open("".join(filename.split(".")[:-1]) + "_clean." + filename.split(".")[-1], "w") as tofile:
+    with open(".".join(filename.split(".")[:-1]) + "_clean." + filename.split(".")[-1], "w") as tofile:
         for url in unique:
             tofile.write('\n'.join(unique[url]) + '\n')
             new_len += len(unique[url])
